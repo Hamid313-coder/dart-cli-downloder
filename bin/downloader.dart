@@ -58,8 +58,13 @@ Future<String> download(String url) async {
     final response = await dio.download(
       url,
       savePath,
+      options: Options(
+        headers: {HttpHeaders.acceptEncodingHeader: '*'}, // Disable gzip
+      ),
       onReceiveProgress: (received, total) {
-        final progress = (received / total * 100).toInt();
+        if (total <= -1) return;
+
+        final progress = ((received / total) * 100).toInt();
         showProgress(progress);
       },
     );
@@ -67,9 +72,9 @@ Future<String> download(String url) async {
     final contentType =
         (response.headers.map['content-type'] as List)[0] as String;
 
-    final extion = contentType.split('/').last;
+    final fileExtension = contentType.split('/').last;
 
-    final newSavePath = renameIfNoExtenion(savePath, extion);
+    final newSavePath = renameIfNoExtenion(savePath, fileExtension);
 
     if (newSavePath != null) return newSavePath;
 
