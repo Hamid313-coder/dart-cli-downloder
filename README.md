@@ -6,6 +6,5 @@
 
 </br>
 
-<video width="320" height="240" autoplay>
-  <source src="./demo.mp4" type="video/mp4">
-</video>
+<h2>Demo</h2>
+<img src="./demo.gif">
