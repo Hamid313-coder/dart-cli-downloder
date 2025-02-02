@@ -2,7 +2,7 @@
 
 <p>A lightweight cli file downloader built with Dart</p>
 
-<p>If you like it, please give it a star(🌟)</p>
+<p>If you liked it, please give it a star(🌟)</p>
 
 </br>
 
